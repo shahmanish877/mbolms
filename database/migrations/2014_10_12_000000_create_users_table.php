@@ -22,9 +22,6 @@ class CreateUsersTable extends Migration
             $table->string('address');
             $table->string('gender');
             $table->date('dob');
-            $table->string('loan_type');
-            $table->string('loan_terms');
-            $table->string('installment_amount');
             $table->string('user_name');
             $table->rememberToken();
             $table->timestamps();
