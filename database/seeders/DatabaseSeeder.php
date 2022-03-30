@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class
         ]);
 
-         \App\Models\User::factory(10)->create();
-         \App\Models\Loan::factory(10)->create();
+         \App\Models\User::factory(50)->create();
+         \App\Models\Loan::factory(50)->create();
 
 
     }

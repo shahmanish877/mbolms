@@ -155,7 +155,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="installment_amount" class="col-md-4 col-form-label text-md-end">{{ __('Installment Amount(in Rs.)') }}</label>
+                            <label for="installment_amount" class="col-md-4 col-form-label text-md-end">{{ __('Installment Amount(Per Month)') }}</label>
 
                             <div class="col-md-6">
                                 <input id="installment_amount" type="number" class="form-control @error('installment_amount') is-invalid @enderror" name="installment_amount" value="{{ old('installment_amount') }}" required autocomplete="installment_amount" autofocus>

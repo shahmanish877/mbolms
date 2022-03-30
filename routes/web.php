@@ -20,3 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::resource('/users', \App\Http\Controllers\UserController::class);
+Route::resource('/loans', \App\Http\Controllers\LoanController::class);
+Route::post('/toggle_user_status', ['App\Http\Controllers\UserController', 'toggle_user_status'])->name('toggle_user_status');
+Route::post('/toggle_loan_status', ['App\Http\Controllers\LoanController', 'toggle_loan_status'])->name('toggle_loan_status');
+
