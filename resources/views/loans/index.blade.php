@@ -2,8 +2,16 @@
 
 @section('content')
     <div class="container">
+
         <div class="row justify-content-center">
             <div class="col-md-10">
+                <div>
+                    <form action="{{ route('loans.create')}}">
+                        <input type="hidden" name="user_id" value="{{ app('request')->input('user_id') ?? '' }}">
+                        <input type="submit" value="New Loan" class="btn btn-success">
+                    </form>
+                </div>
+
                 <div class="card">
                     <div class="card-header row align-items-center">
                         <div class="col-md-8">

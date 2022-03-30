@@ -65,9 +65,15 @@ class LoanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $user = $request->user_id;
+        if (!$user){
+            $users = User::all()->except(1);
+        }else{
+            $users = User::where('id', $user)->get();
+        }
+        return view('loans.create', compact('users'));
     }
 
     /**
@@ -78,7 +84,23 @@ class LoanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_id' => ['required'],
+            'loan_type' => ['required', 'string'],
+            'loan_terms' => ['required', 'numeric', 'min:1', 'max:5'],
+            'installment_amount' => ['required', 'numeric', 'min:5000'],
+        ]);
+        $user_id = $request->input('user_id');
+        $user = User::findOrFail($user_id);
+
+        $loan = $user->loan()->create([
+            'loan_type' => $request->input('loan_type'),
+            'loan_terms' => $request->input('loan_terms'),
+            'installment_amount' => $request->input('installment_amount'),
+        ]);
+
+        return redirect()->route('loans.show', $loan->id)->with('success', 'Loan status updated');
+
     }
 
     /**
